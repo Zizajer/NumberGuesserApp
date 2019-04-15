@@ -15,10 +15,9 @@ namespace NumberGusserApp
             int guessedNumber = 0;
 
             bool isGuessed = false;
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("Hello in Guess The Number Game !!!");
-            Console.ResetColor();
 
+            printInColor(ConsoleColor.Green,"Hello in Guess The Number Game !!!");
+            
             while (!isGuessed)
             {
                 Console.WriteLine("Please write a number from 1 to 10 : ");
@@ -31,20 +30,25 @@ namespace NumberGusserApp
                 {
                     Console.WriteLine("Unable to parse '{input}' ");
                 }
-
-                Console.ForegroundColor = ConsoleColor.Red;
+                
                 if (guessedNumber == randomNumber)
                     isGuessed = true;
                 else
-                    Console.WriteLine("Try again.");
-                Console.ResetColor();
+                    printInColor(ConsoleColor.Red,"Try again.");
             }
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Congratulations you guessed it.");
-            Console.ResetColor();
+
+            printInColor(ConsoleColor.Yellow, "Congratulations you guessed it.");
+
             Console.WriteLine("Please press any key to end the game.");
             Console.ReadKey();
 
+        }
+
+        public static void printInColor(ConsoleColor color, String message)
+        {
+            Console.ForegroundColor = color;
+            Console.WriteLine(message);
+            Console.ResetColor();
         }
     }
 }
